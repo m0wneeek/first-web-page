@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html>
+<head> Making a web page</head>
+<body>
+<p> I'm learning how to make a web page </p>
+</body>
+</html>
