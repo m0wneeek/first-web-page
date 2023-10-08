@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<title> Making a web page </title>
+</head>
+<body>
+<p> <strong> I'm learning how to make a web page </strong> </p>
+
+<H1> How to add a link </H1>
+
+<p> Basically you write some stuff and then "href=" and then the website and it adds the link. like this </p>
+
+<br/> 
+
+<a href="http://www.bing.com"> Here's the link to Bing! </a> </p>
+
+<br/>
+
+<p> crazy isnt it! I can also add images...</p>
+
+<br/>
+
+<H2> Adding images </H2>
+
+<br/>
+
+<img src="C:\Users\monbl\Downloads\spongebobgoingsickomode.png"/>
+
+<p> sad... anyway... you can add images from searches too. Its kinda confusing, I'll be honest. </p>
+
+<img src="https://miro.medium.com/v2/resize:fit:250/format:webp/1*qDRiLcmpYF5qU4vsJWnz2A.png"/>
+
+<p> Wow! crazy! Hey you should click this link </p>
+
+<a href="https://screamintothevoid.com/">Here...Click it <br/> <img src="https://www.sideshow.com/wp/wp-content/uploads/2021/05/Evil-Patrick-990x561.jpg" width="200" height="100"/></a>
+
+<H3> anyway heres how to make a table </H3>
+
+<table border="3" style="border:solid;">
+<tr><td>morning</td><td>griddy</td><td>6 mins</td></tr>
+<tr><td>afternoon</td><td>cry a bit</td><td>3 hours</td></tr>
+<tr><td>evening</td><td>sleep peacefully</td><td>8 mins</td></tr>
+</table>
+
+<p> so yeah thats my daily routine </p>
+<!--what in the world does this even mean. hey anyway use w3schools to practice with a web page right next to it-->
+
+<H3> omg I can make a drop down list!! watch</H3>
+
+<br/>
+<p style="color:red;"> meme for free? </p>
+
+<select name="meme for free?">
+<option value="sponbogb">Sponbogb</option>
+<option value="dquwdiard">dquwdiard</option>
+<option value="karb">karb</option>
+<option value="kevin">kevin</option>
+<option value="the shell">the shell</option>
+<option value="nut">nut</option>
+
+<br/>
+
+<input type="submit">
+
+<br/><br/>
+
+</select>
+<img src="https://i.pinimg.com/564x/34/0a/f9/340af9f6c083fa3a2272d1881b0d4661.jpg" width="300" height="100"/>
+<p> yeah it doesnt actually do anything but <strong> <em> it will. </em> </strong> anyway look a button</p>
+<br/><br/>
+
+  <script> <!--wow look javascript-->
+      function MemeAcquirer() { 
+         document.getElementById("result").innerHTML = "so im standing there... Barbecue sauce on my ti-";  
+      } 
+   </script>
+ 
+   <button onclick = "MemeAcquirer()"> press this and see what happens....just for fun</button> 
+   <p> 
+      <div id = "result"><img src="https://preview.redd.it/62yli4kqutaa1.jpg?width=800&format=pjpg&auto=webp&s=ff776760e8ce1116032b723a7c811e4d3572a9df" width="200" height="200"/> </div> 
+   </p> <!--idk how to get the image to appear with the text-->
+
+<p style="font-size:250%"> this one is for all the geriatrics in the room</p>
+<center><p style="font-size:600%">A</p></center>
+<br/><br/>
+<center><p style="font-size:400%;letter-spacing:60px">G H</p></center>
+<br/><br/>
+<center><p style="font-size:200%;letter-spacing:80px">F Q R</p></center>
+<br/><br/><br/>
+<center><p style="font-size:100%;letter-spacing:100px">H O P F</p></center>
+<br/>
+<p style="font-size:50%">now how far can you read?</p>
+
+	<script>
+	
+	function diplayInput()//I want to add a text box with a submit button
+	{
+	 var testInput = document.getElementById("GerryQuestion").value;
+	 
+	 if (testInput.length == 0)
+	 {
+		document.getElementById("paraN").innerHTML="Well that wasn't very helpful was it"
+		}
+	else
+		document.getElementById("para").innerHTML="pog... i suppose";
+	}
+	
+	</script>
+	
+<input id="GerryQuestion" type="text"/>
+	
+<button onclick="diplayInput();">How much did u read?</button>
+
+<p id="para" style="color:green;"></p> <!-- need to fix this so it goes with the if else. The green makes both options come up... interesting-->
+<p id="paraN" style="color:red;"></p>
+
+<p> hey anyway look at this I can do math now!</p>
+
+<script>
+function myAlertMaths() {
+	var userNumber = document.getElementById("mathsInput").value;
+	
+	alert("Your number x 3 is " + userNumber * 3);
+		
+	}
+</script>
+
+<p> it uses Javascript isnt that cool? Ive used it a few times in this ol thing</p>
+
+<button onclick="alert('The test was successful! pog!');">alert test!</button>
+<input id="mathsInput" type="number"/> <button onclick="myAlertMaths()">Multiply by threee</input> </button>
+
+<br/><br/>
+
+<p>okay now look at this</p>
+
+<script>
+function myPrompt() {
+	var nickname = prompt("What should I call you?", "Lightning McQueen"); //This is a prompt rather than an alert. it gets users to give a response
+	if (nickname != "") { //! is not equal to
+		document.getElementById("test").innerHTML = 
+		"Okay cool. " + nickname + "... I dont know how to feel about that actually. Bye.";
+	}
+	else {
+		alert("Funny guy, huh, no nickname nerd");
+		}
+}
+</script>
+
+<button onclick="myPrompt()">You should press this button</button>
+<p id="test"></p>
+
+</body>
+</html>
