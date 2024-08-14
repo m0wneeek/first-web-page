@@ -1,161 +1,6 @@
 <!DOCTYPE html>
 
-<script>
-//Adding the onmouseover event for the greeting
-document.getElementById("greeting").onmouseover = function () {
-  mouseOver();
-};
-document.getElementById("greeting").onmouseout = function () {
-  mouseOut();
-};
 
-function mouseOver() {
-  document.getElementById("greeting").style.color = "green";
-}
-
-function mouseOut() {
-  document.getElementById("greeting").style.color = "black";
-}
-//Making the buttons on top of the website functional, so when clicked it takes the user to that specific section.
-const meetButton = document.getElementById("meet-button");
-const meetSection = document.getElementById("meet-section");
-
-meetButton.addEventListener("click", () => {
-  meetSection.scrollIntoView({ behavior: "smooth", block: "end" });
-});
-const CalculateButton = document.getElementById("Calculate-button");
-const CalculateSection = document.getElementById("Calculate-section");
-
-CalculateButton.addEventListener("click", () => {
-  CalculateSection.scrollIntoView({ behavior: "smooth", block: "end" });
-});
-const AdultButton = document.getElementById("Adult-button");
-const AdultSection = document.getElementById("Adult-section");
-
-AdultButton.addEventListener("click", () => {
-  AdultSection.scrollIntoView({ behavior: "smooth", block: "end" });
-});
-const ChildrenButton = document.getElementById("Children-button");
-const ChildrenSection = document.getElementById("Children-section");
-
-ChildrenButton.addEventListener("click", () => {
-  ChildrenSection.scrollIntoView({ behavior: "smooth", block: "end" });
-});
-const ContactButton = document.getElementById("Contact-button");
-const ContactSection = document.getElementById("Contact-section");
-
-ContactButton.addEventListener("click", () => {
-  ContactSection.scrollIntoView({ behavior: "smooth", block: "end" });
-});
-
-//Adding back to top button functionality
-btnBackToTop = document.getElementById("backToTop");
-btnBackToTop.addEventListener("click", function () {
-  window.scrollTo({ top: 0, behaviour: "smooth" });
-});
-
-//Mons part
-//enter button works on keypress
-
-//enter button works on keypress
-
-const weightInput = document.getElementById("weightInput");
-weightInput.addEventListener("keypress", function (calcEvent) {
-  if (calcEvent.key === "Enter") {
-    calcEvent.preventDefault();
-    DisplayBMI();
-  }
-});
-//need to put in messages for incorrect inputs. Only allow floats in inputs
-
-//Displaying BMI
-function DisplayBMI() {
-  const height = parseFloat(document.getElementById("heightInput").value);
-  const weight = parseFloat(document.getElementById("weightInput").value);
-  const errorMessage = document.getElementById("error-message");
-  const bmiResult = document.getElementById("BMI");
-
-  //Clears the error message text
-  errorMessage.textContent = "";
-  //clearing the BMI result if there is an incorrect input
-  bmiResult.textContent = "";
-  //includes an error message for incorrect inputs. If the values are not numbers or are not greater than 0
-  if (isNaN(height) || height <= 0) {
-    errorMessage.textContent = "Please enter a valid height in metres.";
-    return;
-  }
-
-  if (isNaN(weight) || weight <= 0) {
-    errorMessage.textContent = "Please enter a valid weight in kilograms.";
-    return;
-  }
-
-  const bmiCategory = calculateBMI(weight, height);
-  document.getElementById("BMI").textContent = ` ${bmiCategory}`;
-}
-
-//Calculating BMI and returning the matching category
-function calculateBMI(weight, height) {
-  const bmi = (weight / height ** 2).toFixed(2);
-
-  //for underweight
-  if (bmi <= 18.5) {
-    return `A result of ${bmi} means you are underweight.`;
-  }
-  //for normal
-  else if (bmi <= 24.9) {
-    return `A result of ${bmi} means you are healthy.`;
-  }
-  //for overweight
-  else if (bmi <= 29.9) {
-    return `A result of ${bmi} means you are overweight.`;
-  }
-  //for obese
-  else if (bmi <= 39.9) {
-    return `A result of ${bmi} means you are obese.`;
-  }
-  //for extremely obese
-  else if (bmi > 40) {
-    return `A result of ${bmi} means you are extremely obese.`;
-  }
-}
-//Karens code for the list.
-const healthyFoodList = document.getElementById("good-food-list");
-const healthyFoodItems = healthyFoodList.getElementsByTagName("li");
-
-// const healthyFoodList = ["Vegetables", "Fruit", "Chicken, Turkey and Pork", "Fish", "Nuts and seeds", "Beans and pulses", "Yoghurt and milk", "Eggs"];
-
-// console.log (healthyFoodList);
-
-for (let i = 0; i < healthyFoodItems.length; i++) {
-  const healthyFood = healthyFoodItems[i];
-  healthyFood.textContent = healthyFood.textContent + " 👌";
-}
-
-// const unhealthyFoodList = document.getElementById("unhealthy-food-list");
-// const unhealthyFoodItems = unhealthyFoodList.getElementsByTagName("li");
-
-const unhealthyFoodList = document.getElementById("unhealthy-food-list");
-const unhealthyFoodItems = unhealthyFoodList.getElementsByTagName("li");
-
-for (let i = 0; i < unhealthyFoodItems.length; i++) {
-  const unhealthyFood = unhealthyFoodItems[i];
-  unhealthyFood.textContent = unhealthyFood.textContent + " 👎🏻";
-}
-//form
-document.getElementById("form").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const phoneNumber = document.getElementById("phoneNumber").value;
-  const message = document.getElementById("message").value;
-
-  console.log("Message:", message);
-
-  console.log(`Thank you for submitting your contact request, ${name}!`);
-});
-</script>
 
 <style>
 header {
@@ -214,7 +59,7 @@ footer {
   text-align: center;
 }
 
-/*Mons part: Make a booking section */
+/*Mons part: BMI and calc bmi */
 
 .container {
   width: 100%;
@@ -599,6 +444,161 @@ form button {
     </div>
     <button type="button" id="backToTop"> Back to top</button>
 </section>
+
+<script>
+//Adding the onmouseover event for the greeting
+document.getElementById("greeting").onmouseover = function () {
+  mouseOver();
+};
+document.getElementById("greeting").onmouseout = function () {
+  mouseOut();
+};
+
+function mouseOver() {
+  document.getElementById("greeting").style.color = "green";
+}
+
+function mouseOut() {
+  document.getElementById("greeting").style.color = "black";
+}
+//Making the buttons on top of the website functional, so when clicked it takes the user to that specific section.
+const meetButton = document.getElementById("meet-button");
+const meetSection = document.getElementById("meet-section");
+
+meetButton.addEventListener("click", () => {
+  meetSection.scrollIntoView({ behavior: "smooth", block: "end" });
+});
+const CalculateButton = document.getElementById("Calculate-button");
+const CalculateSection = document.getElementById("Calculate-section");
+
+CalculateButton.addEventListener("click", () => {
+  CalculateSection.scrollIntoView({ behavior: "smooth", block: "end" });
+});
+const AdultButton = document.getElementById("Adult-button");
+const AdultSection = document.getElementById("Adult-section");
+
+AdultButton.addEventListener("click", () => {
+  AdultSection.scrollIntoView({ behavior: "smooth", block: "end" });
+});
+const ChildrenButton = document.getElementById("Children-button");
+const ChildrenSection = document.getElementById("Children-section");
+
+ChildrenButton.addEventListener("click", () => {
+  ChildrenSection.scrollIntoView({ behavior: "smooth", block: "end" });
+});
+const ContactButton = document.getElementById("Contact-button");
+const ContactSection = document.getElementById("Contact-section");
+
+ContactButton.addEventListener("click", () => {
+  ContactSection.scrollIntoView({ behavior: "smooth", block: "end" });
+});
+
+//Adding back to top button functionality
+btnBackToTop = document.getElementById("backToTop");
+btnBackToTop.addEventListener("click", function () {
+  window.scrollTo({ top: 0, behaviour: "smooth" });
+});
+
+//Mons part
+//enter button works on keypress
+
+const weightInput = document.getElementById("weightInput");
+weightInput.addEventListener("keypress", function (calcEvent) {
+  if (calcEvent.key === "Enter") {
+    calcEvent.preventDefault();
+    DisplayBMI();
+  }
+});
+
+//Displaying BMI
+function DisplayBMI() {
+  const height = parseFloat(document.getElementById("heightInput").value);
+  const weight = parseFloat(document.getElementById("weightInput").value);
+  const errorMessage = document.getElementById("error-message");
+  const bmiResult = document.getElementById("BMI");
+
+  //Clears the error message text
+  errorMessage.textContent = "";
+  //clearing the BMI result if there is an incorrect input
+  bmiResult.textContent = "";
+  //includes an error message for incorrect inputs. If the values are not numbers or are not greater than 0
+  if (isNaN(height) || height <= 0) {
+    errorMessage.textContent = "Please enter a valid height in metres.";
+    return;
+  }
+
+  if (isNaN(weight) || weight <= 0) {
+    errorMessage.textContent = "Please enter a valid weight in kilograms.";
+    return;
+  }
+
+  const bmiCategory = calculateBMI(weight, height);
+  document.getElementById("BMI").textContent = ` ${bmiCategory}`;
+}
+
+//Calculating BMI and returning the matching category
+function calculateBMI(weight, height) {
+  const bmi = (weight / height ** 2).toFixed(2);
+
+  //for underweight
+  if (bmi <= 18.5) {
+    return `A result of ${bmi} means you are underweight.`;
+  }
+  //for normal
+  else if (bmi <= 24.9) {
+    return `A result of ${bmi} means you are healthy.`;
+  }
+  //for overweight
+  else if (bmi <= 29.9) {
+    return `A result of ${bmi} means you are overweight.`;
+  }
+  //for obese
+  else if (bmi <= 39.9) {
+    return `A result of ${bmi} means you are obese.`;
+  }
+  //for extremely obese
+  else if (bmi > 40) {
+    return `A result of ${bmi} means you are extremely obese.`;
+  }
+}
+//Karens code for the list.
+const healthyFoodList = document.getElementById("good-food-list");
+const healthyFoodItems = healthyFoodList.getElementsByTagName("li");
+
+// const healthyFoodList = ["Vegetables", "Fruit", "Chicken, Turkey and Pork", "Fish", "Nuts and seeds", "Beans and pulses", "Yoghurt and milk", "Eggs"];
+
+// console.log (healthyFoodList);
+
+for (let i = 0; i < healthyFoodItems.length; i++) {
+  const healthyFood = healthyFoodItems[i];
+  healthyFood.textContent = healthyFood.textContent + " 👌";
+}
+
+// const unhealthyFoodList = document.getElementById("unhealthy-food-list");
+// const unhealthyFoodItems = unhealthyFoodList.getElementsByTagName("li");
+
+const unhealthyFoodList = document.getElementById("unhealthy-food-list");
+const unhealthyFoodItems = unhealthyFoodList.getElementsByTagName("li");
+
+for (let i = 0; i < unhealthyFoodItems.length; i++) {
+  const unhealthyFood = unhealthyFoodItems[i];
+  unhealthyFood.textContent = unhealthyFood.textContent + " 👎🏻";
+}
+//form
+document.getElementById("form").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phoneNumber = document.getElementById("phoneNumber").value;
+  const message = document.getElementById("message").value;
+
+  console.log("Message:", message);
+
+  console.log(`Thank you for submitting your contact request, ${name}!`);
+});
+</script>
+</body>
 <footer>
   <p>&copy; 2024 Javascript Project, group "Health 1" </p>
 </footer>
