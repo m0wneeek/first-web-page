@@ -1,6 +1,6 @@
- <script>
-// Aleart the user about cookies
-alert("This website uses cookies.");
+<!DOCTYPE html>
+
+<script>
 //Adding the onmouseover event for the greeting
 document.getElementById("greeting").onmouseover = function () {
   mouseOver();
@@ -331,8 +331,6 @@ form button {
   color: white;
 }
 </style>
-
-<!DOCTYPE html>
 
 <head>
   <title>
