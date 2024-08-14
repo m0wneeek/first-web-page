@@ -1,0 +1,606 @@
+ <script>
+// Aleart the user about cookies
+alert("This website uses cookies.");
+//Adding the onmouseover event for the greeting
+document.getElementById("greeting").onmouseover = function () {
+  mouseOver();
+};
+document.getElementById("greeting").onmouseout = function () {
+  mouseOut();
+};
+
+function mouseOver() {
+  document.getElementById("greeting").style.color = "green";
+}
+
+function mouseOut() {
+  document.getElementById("greeting").style.color = "black";
+}
+//Making the buttons on top of the website functional, so when clicked it takes the user to that specific section.
+const meetButton = document.getElementById("meet-button");
+const meetSection = document.getElementById("meet-section");
+
+meetButton.addEventListener("click", () => {
+  meetSection.scrollIntoView({ behavior: "smooth", block: "end" });
+});
+const CalculateButton = document.getElementById("Calculate-button");
+const CalculateSection = document.getElementById("Calculate-section");
+
+CalculateButton.addEventListener("click", () => {
+  CalculateSection.scrollIntoView({ behavior: "smooth", block: "end" });
+});
+const AdultButton = document.getElementById("Adult-button");
+const AdultSection = document.getElementById("Adult-section");
+
+AdultButton.addEventListener("click", () => {
+  AdultSection.scrollIntoView({ behavior: "smooth", block: "end" });
+});
+const ChildrenButton = document.getElementById("Children-button");
+const ChildrenSection = document.getElementById("Children-section");
+
+ChildrenButton.addEventListener("click", () => {
+  ChildrenSection.scrollIntoView({ behavior: "smooth", block: "end" });
+});
+const ContactButton = document.getElementById("Contact-button");
+const ContactSection = document.getElementById("Contact-section");
+
+ContactButton.addEventListener("click", () => {
+  ContactSection.scrollIntoView({ behavior: "smooth", block: "end" });
+});
+
+//Adding back to top button functionality
+btnBackToTop = document.getElementById("backToTop");
+btnBackToTop.addEventListener("click", function () {
+  window.scrollTo({ top: 0, behaviour: "smooth" });
+});
+
+//Mons part
+//enter button works on keypress
+
+//enter button works on keypress
+
+const weightInput = document.getElementById("weightInput");
+weightInput.addEventListener("keypress", function (calcEvent) {
+  if (calcEvent.key === "Enter") {
+    calcEvent.preventDefault();
+    DisplayBMI();
+  }
+});
+//need to put in messages for incorrect inputs. Only allow floats in inputs
+
+//Displaying BMI
+function DisplayBMI() {
+  const height = parseFloat(document.getElementById("heightInput").value);
+  const weight = parseFloat(document.getElementById("weightInput").value);
+  const errorMessage = document.getElementById("error-message");
+  const bmiResult = document.getElementById("BMI");
+
+  //Clears the error message text
+  errorMessage.textContent = "";
+  //clearing the BMI result if there is an incorrect input
+  bmiResult.textContent = "";
+  //includes an error message for incorrect inputs. If the values are not numbers or are not greater than 0
+  if (isNaN(height) || height <= 0) {
+    errorMessage.textContent = "Please enter a valid height in metres.";
+    return;
+  }
+
+  if (isNaN(weight) || weight <= 0) {
+    errorMessage.textContent = "Please enter a valid weight in kilograms.";
+    return;
+  }
+
+  const bmiCategory = calculateBMI(weight, height);
+  document.getElementById("BMI").textContent = ` ${bmiCategory}`;
+}
+
+//Calculating BMI and returning the matching category
+function calculateBMI(weight, height) {
+  const bmi = (weight / height ** 2).toFixed(2);
+
+  //for underweight
+  if (bmi <= 18.5) {
+    return `A result of ${bmi} means you are underweight.`;
+  }
+  //for normal
+  else if (bmi <= 24.9) {
+    return `A result of ${bmi} means you are healthy.`;
+  }
+  //for overweight
+  else if (bmi <= 29.9) {
+    return `A result of ${bmi} means you are overweight.`;
+  }
+  //for obese
+  else if (bmi <= 39.9) {
+    return `A result of ${bmi} means you are obese.`;
+  }
+  //for extremely obese
+  else if (bmi > 40) {
+    return `A result of ${bmi} means you are extremely obese.`;
+  }
+}
+//Karens code for the list.
+const healthyFoodList = document.getElementById("good-food-list");
+const healthyFoodItems = healthyFoodList.getElementsByTagName("li");
+
+// const healthyFoodList = ["Vegetables", "Fruit", "Chicken, Turkey and Pork", "Fish", "Nuts and seeds", "Beans and pulses", "Yoghurt and milk", "Eggs"];
+
+// console.log (healthyFoodList);
+
+for (let i = 0; i < healthyFoodItems.length; i++) {
+  const healthyFood = healthyFoodItems[i];
+  healthyFood.textContent = healthyFood.textContent + " 👌";
+}
+
+// const unhealthyFoodList = document.getElementById("unhealthy-food-list");
+// const unhealthyFoodItems = unhealthyFoodList.getElementsByTagName("li");
+
+const unhealthyFoodList = document.getElementById("unhealthy-food-list");
+const unhealthyFoodItems = unhealthyFoodList.getElementsByTagName("li");
+
+for (let i = 0; i < unhealthyFoodItems.length; i++) {
+  const unhealthyFood = unhealthyFoodItems[i];
+  unhealthyFood.textContent = unhealthyFood.textContent + " 👎🏻";
+}
+//form
+document.getElementById("form").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phoneNumber = document.getElementById("phoneNumber").value;
+  const message = document.getElementById("message").value;
+
+  console.log("Message:", message);
+
+  console.log(`Thank you for submitting your contact request, ${name}!`);
+});
+</script>
+
+<style>
+header {
+  background-color: #ffe4b5;
+  color: #black;
+  padding: 20px;
+  box-shadow: 2px 2px 5px #336666;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10pt;
+}
+
+table {
+  border-collapse: collapse;
+  width: 30%;
+  float: left;
+  margin-right: 50px;
+}
+
+th,
+td {
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  padding: 14px;
+}
+tr:nth-child(even) {
+  background-color: #D6EEEE;
+}
+
+section {
+  background-color: #fdf5e6;
+  color: #0c0d0d;
+  padding: 10px;
+  border: none;
+  box-shadow: 2px 2px 5px #c9f0e2;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #20b2aa;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+}
+footer {
+  background-color: #ffe4b5;
+  color: #0c0d0d;
+  padding: 10px;
+  text-align: center;
+}
+
+/*Mons part: Make a booking section */
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background: rgba(255, 255, 128, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2vw 4vw;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 10px;
+}
+
+form h3 {
+  color: gray;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+form input,
+form textarea {
+  border: 0;
+  margin: 10px 0px;
+  padding: 20px;
+  outline: none;
+  background: white;
+  font-size: 16px;
+}
+
+form button {
+  padding: 15px;
+  background: pink;
+  color: white;
+  font-size: 18px;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+.space {
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 450px) {
+  .bmi-calc-section body {
+    font-size: 16px;
+  }
+
+  .bmi-calc-section #bmi-button {
+    margin-top: 0.5rem;
+    radius: 0.2rem;
+    color: white;
+  }
+
+  .bmi-calc-section label,
+  .bmi-calc-section input {
+    margin: 0.2rem;
+    width: auto;
+  }
+}
+
+.bmi-calc-section .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30vw;
+  height: 300px;
+  background: rgba(255, 255, 128, 0.5);
+  colour: #black;
+  padding: 20px;
+  border-radius: 1rem;
+  margin: 1rem;
+  border: solid;
+  border-color: #4776e6;
+}
+
+.bmi-calc-section h4 {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #black;
+  text-shadow: 0 0 5px white, 0 0 5px white, 0 0 5px white;
+}
+
+.bmi-calc-section #result {
+  padding-top: 1rem;
+  align-self: center;
+  font-weight: bold;
+  font-size: 2rem;
+  color: white;
+  text-shadow: 0 0 5px lightblue, 0 0 5px lightblue, 0 0 5px blue, 0 0 5px blue;
+}
+
+.bmi-calc-section label,
+.bmi-calc-section input {
+  margin: 0.2rem;
+}
+
+.bmi-calc-section #bmi-button {
+  margin-top: 0.5rem;
+  background-image: linear-gradient(to right, #4776e6 0%, #4776e6 100%);
+  radius: 0.2rem;
+  color: white;
+}
+</style>
+
+<!DOCTYPE html>
+
+<head>
+  <title>
+    NutriGuidance
+  </title>
+</head>
+
+<button type="button" id="meet-button"> Meet The Team</button>
+<button type="button" id="Calculate-button"> Calculate your BMI</button>
+<button type="button" id="Adult-button"> Adult Nutrition Advice</button>
+<button type="button" id="Children-button"> Children Nutrition Advice</button>
+<button type="button" id="Contact-button"> Contact us</button>
+<header>
+  <h1>NutriGuidance, with you every step of the journey!</h1>
+</header>
+<img src="https://static.wixstatic.com/media/fdf916_9390a661c06f432e9ffeb569bb01628b~mv2.jpg/v1/fit/w_1000%2Ch_932%2Cal_c%2Cq_80/file.jpg" style="width:1000px; height:800px;">
+<section>
+  <h2 id="greeting">Welcome to our website!</h2>
+  <section>
+    <header>
+      <h2 id="meet-section"> Meet the team </h2>
+    </header>
+    <img src="https://online-learning-college.com/wp-content/uploads/2022/07/How-to-Become-a-Nutritionist-.jpg" alt="John Smith, our team leader." style="width:400px; height:300px;">
+    <h3>Dr. John Smith.</h3>
+    <div> Meet our team leader! Dr. John Smith is one of the best nutritionist with over 30 years proven experience as nutritionist. He has thorough understanding of biochemistry and human physiology and great understanding of research methods and data analysis. Our team leader has excellent communication and interpersonal skills</div>
+
+    <img src="https://www.cameronmch.com/wp-content/uploads/2021/06/iStock-1214221095-scaled.jpg" alt="Trina Wimbledon, our clinical dietitian." style="width:400px; height:300px;">
+    <h3>Dr. Trina Wimbledon.</h3>
+    <div>This is Trina Wimbledon, our clinician dietitian. Her day to day role includes monitoring patients' current health conditions. Advising nutritional and dietary supplements to maintain their healthy lifestyle. Speeding up their recovery process. Assisting patients in adopting long-lasting lifestyle changes and teaching them about dietary recommendations and healthy eating practices.</div>
+    <img src="https://thenewsgod.com/wp-content/uploads/2021/04/96378d_25696527afd046d1a378f8956d562360_mv2_d_2800_1869_s_2-scaled.jpg" alt="Pamela Anniston, our Healthcare Nutritionist" style="width:400px; height:300px;">
+    <h3>Dr. Pamela Anniston.</h3>
+    <div>Pamela Anniston is our Nutritionist. Pamela works on group setting with our patients and will give general guidance versus individualized meal plans. Pamela may offer their services online or in person and sometimes work in wellness settings such as spas and gyms.</div>
+    <img src="https://alsakhaa.co/wp-content/uploads/2023/06/nutration.png" alt="William Green, our Nutritionist" style="width:400px; height:300px;">
+    <h3>Dr. William Green.</h3>
+    <div>Meet William Green. Another one of our highly specialised Nutritionists. William will monitor patients' current health conditions. Advising nutritional and dietary supplements to maintain their healthy lifestyle. Speeding up their recovery process. Assisting patients in adopting long-lasting lifestyle changes and teaching them about dietary recommendations and healthy eating practices.</div>
+    <img src="https://www.thetrainingterminal.com/wp-content/uploads/2020/01/Hotel-Receptionist-1024x683.jpeg" alt="Jenna Morada, our Receptionist" style="width:400px; height:300px;">
+    <h3>Miss Jenna Morada.</h3>
+    <div>Last, but not least, meet Jenna Morada, our front desk executive. Jenna is the person who takes care of scheduling patient appointments according to doctor availability. Explaining intake forms to new patients. Processing payments after treatment. Greeting patients and managing front office duties. Answering phones and entering patient information into databases.</div>
+  </section>
+
+  <body>
+    <header>
+      <h2 id="Calculate-section"> BMI: Calculate your BMI and see what it says about your health. </h2>
+    </header>
+    <section>
+
+      <p>BMI (or Body Mass Index) is a measurement of a person's weight based on their height. It is calculated differently for adults, compared to children and teenagers. <br><br>Consider the BMI table for adults:</p>
+      <div class="space"></div>
+      <table id="adult-bmi-table">
+        <tr>
+          <th>Weight class</th>
+          <th>BMI</th>
+        </tr>
+        <tr>
+          <td>Underweight</td>
+          <td>under 18.5</td>
+        </tr>
+        <tr>
+          <td>Healthy</td>
+          <td>between 18.5 and 24.9</td>
+        </tr>
+        <tr>
+          <td>Overweight</td>
+          <td>25 and 29.9</td>
+        </tr>
+        <tr>
+          <td>Obese</td>
+          <td>between 30 and 39.9</td>
+        </tr>
+        <tr>
+          <td>Extremely Obese</td>
+          <td>40 and over</td>
+        </tr>
+      </table>
+
+      <img src="https://appnhs24wp41a8c38064.blob.core.windows.net/blobappnhs24wp41a8c38064/wp-content/uploads/2023/04/bmichart-2.jpg" width="600" height="300" />
+
+      <div class="space"></div>
+
+      <p>Then, consider the table for children and teenagers:</p>
+
+      <div class="space"></div>
+
+      <table id="kids-bmi-table">
+        <tr>
+          <th>Weight class</th>
+          <th>BMI centile</th>
+        </tr>
+        <tr>
+          <td>Underweight</td>
+          <td>2nd centile or below</td>
+        </tr>
+        <tr>
+          <td>Healthy</td>
+          <td>between 2nd and 91st centiles</td>
+        </tr>
+        <tr>
+          <td>Overweight</td>
+          <td>between 91st to 97th centile</td>
+        </tr>
+        <tr>
+          <td>Very Overweight</td>
+          <td>98th centile or above</td>
+        </tr>
+      </table>
+
+      <img src="https://salud-america.org/wp-content/uploads/2023/01/cdc-updated-bmi-charts-for-boys-and-girls-2023.jpg" width="600" height="300" />
+
+      <div class="space"></div>
+
+      <p>For children, their height and weight changes so rapidly that their BMI is measured in centiles rather than how it is calculated with adults.
+        <br><br>
+        Use this handy calculator tool to check what your BMI is. Use your height in metres and your weight in kilograms to find out more!
+
+    </section>
+
+    <section class="bmi-calc-section">
+      <div class="container">
+        <h4>Adult BMI Calculator</h4><span>Height:</span>
+        <input type="number" id="heightInput" placeholder="enter height in metres" />
+        <br>
+        <span>Weight:</span>
+        <input type="number" id="weightInput" placeholder="enter weight in kilograms" />
+
+        <button class="button" id="bmi-button" onclick="DisplayBMI()">Calculate BMI</button>
+        <p>
+          Your BMI Result: <span id="BMI"></span>
+        </p>
+        <p class="error-message" id="error-message"></p>
+    </section>
+    <div>Obesity is a global and complex public health concern. It is associated with reduced life
+      expectancy and is a risk factor for a range of chronic diseases, including cardiovascular
+      disease, type 2 diabetes, cancer, liver, and respiratory disease, and can also impact on
+      mental health.
+      Prevalence of overweight and obesity in adults (aged 18 years and over)
+      In 2022 to 2023, 64.0% of adults aged 18 years and over in England were estimated to be
+      overweight with 26.2% considered to be obese. There has been an upwards trend in both
+      overweight and obesity since 201</div>
+    <h3>Healthy Foods to plate</h3>
+    <ul id="good-food-list">
+      <li>Vegetables</li>
+      <li>Fruit</li>
+      <li>Chicken, Turkey and Pork</li>
+      <li>Fish</li>
+      <li>Nuts and seeds</li>
+      <li>Beans and pulses</li>
+      <li>Yogurt and milk</li>
+      <li>Eggs</li>
+
+    </ul>
+
+    <h3>Unhealthy food to bin</h3>
+    <ul id="unhealthy-food-list">
+      <li>White bread</li>
+      <li>Breakfast cereals</li>
+      <li>Fried food</li>
+      <li>Chips and crisps</li>
+      <li>Processed meats</li>
+      <li>Frozen yoghurt and ice cream</li>
+
+    </ul>
+    <header>
+      <h2 id="Adult-section"> Adult Nutrition Advice</h2>
+    </header>
+    <section>
+      <h3>Nutrition and diabetis. </h3>
+      <div>
+        <p>Unhealthy behaviours, including diet and physical activity, coupled with genetic predisposition, drive type 2 diabetes (T2D) occurrence and severity; the present review aims to summarise the most recent nutritional approaches in T2D, outlining unmet needs. Guidelines consistently suggest reducing energy intake to counteract the obesity epidemic, frequently resulting in sarcopenic obesity, a condition associated with poorer metabolic control and cardiovascular disease. Various dietary approaches have been proposed with largely similar results, with a preference for the Mediterranean diet and the best practice being the diet that patients feel confident of maintaining in the long term based on individual preferences. Patient adherence is indeed the pivotal factor for weight loss and long-term maintenance, requiring intensive lifestyle intervention. The consumption of nutritional supplements continues to increase even if international societies do not support their systematic use. Inositols and vitamin D supplementation, as well as micronutrients (zinc, chromium, magnesium) and pre/probiotics, result in modest improvement in insulin sensitivity, but their use is not systematically suggested. To reach the desired goals, patients should be actively involved in the collaborative development of a personalised meal plan associated with habitual physical activity, aiming at normal body weight and metabolic control.</p>
+      </div>
+      <div>
+        <p>Diabetes mellitus, namely type 2 diabetes (T2D), constitutes a significant challenge for health systems worldwide. According to the 2019 Diabetes Atlas of the International Diabetes Federation [1], 463 million adults are currently living with diabetes (1 on 11 individuals worldwide, but 1 in 5 are aged over 65). The total number is expected to increase further by 700 million in 2045. The economic impact is huge—driven by the direct costs of treatment and complications, the indirect costs of disability and premature death, and the intangible costs of poor quality of life.</p>
+
+        <p>Despite its characterizations as a disease of affluence, nutritional problems are frequent in T2D. Unhealthy lifestyles expressed by overnutrition and/or scarce physical activity, leading to overweight and obesity, add to genetic defects in the pathogenesis of the disease. Dietary restrictions are prescribed to reduce the incidence of T2D as well as to improve metabolic control [2], but weight loss is burdened by the loss of muscle mass [3] and sarcopenia adds to age-dependent muscle wasting [4], increasing frailty [5]. These two opposite needs make a correct nutritional approach mandatory to reduce disease burden, improve metabolic control, limit pharmacologic treatment and reduce the risk of impending cardiovascular disease.</p>
+
+        <p>National and international guidelines for nutritional and lifestyle recommendations are available [5,6,7,8,9], together with protocols to guide weight loss to produce long-term T2D remission [10]. The proposed strategies (dietary prescription, lifestyle counselling, cognitive behaviour therapy), although all-inclusive of nutritional components, are markedly different in their approach and goals and should be known by clinicians approaching patients with T2D (Table 1) [11]. The present review is intended to summarize the most recent nutritional approaches in T2D, also outlining unmet needs.</p>
+      </div>
+      <h3>Nutrition and Heart diseases.</h3>
+      <div>
+        <p>Despite continued advances in health care, the cardiovascular disease (CVD) mortality rate has plateaued in recent years and appears to be trending upward. Poor diet is a leading cause of obesity and type 2 diabetes mellitus, which are leading contributors to CVD morbidity and mortality. Although dietary modification is a cornerstone of CVD prevention, implementation in clinical practice is limited by inadequate formal training in nutrition science. In this report, we review the individual components of a heart-healthy diet, evidence-based dietary recommendations, and the impact of diet on CVD risk factor prevention and management. Furthermore, we examine the unique difficulties of dietary counseling in low-socioeconomic-status environments and provide an evidence-based approach to better serve these populations. We utilized PubMed searches in adults with no date restriction with the following search terms: “carbohydrate,” “fat,” protein,” “DASH,” “Mediterranean,” “plant-based,” “vegetarian,” “cardiovascular disease,” “obesity,” “weight loss,” “diabetes,” “socioeconomic status,” and “race.” In this review, we demonstrate that patients should focus on implementing a general diet plan that is high in fruits, whole grains, legumes, and nonstarchy vegetables while low in trans-fats, saturated fats, sodium, red meat, refined carbohydrates, and sugar-sweetened beverages. The Dietary Approaches to Stop Hypertension, Mediterranean, and vegetarian diets have the most evidence for CVD prevention. Clinicians should understand the barriers that patients may face in terms of access to healthy dietary choices. Further research is needed to determine the dietary changes that are most economically, socioculturally, and logistically feasible to reduce these barriers. Improvement in diet is a public health priority that can lead to a significant population-level reduction in CVD morbidity and mortality. It is imperative that clinicians understand current dietary practice guidelines and implement evidence-based dietary counseling in those at high risk for CVD.</p>
+        <p>Nutrition science demonstrates that a healthy diet embraces high consumption of nonstarchy vegetables, fruits, whole grains, and legumes in addition to limited to moderate consumption of nuts, seafood, lean meats, low-fat dairy products, and vegetable oil.9 Trans-fats, saturated fats, sodium, red meat, refined carbohydrates, and sugar-sweetened beverages (SSBs) should be minimized or avoided altogether. The “United States Department of Agriculture (USDA) MyPlate”) may be used as a handout to help patients visualize the recommended daily intake of major food groups. The total quantity of food intake is also important, with caloric intake restriction being a key strategy to prevent overconsumption and weight gain.</p>
+        <p>The 2015 to 2020 Dietary Guidelines for America recommend 3 healthy eating patterns that incorporate variants of the general principles highlighted above: 1) US healthy eating diet, 2) healthy Mediterranean diet, and 3) the healthy vegetarian diet.9 Carbohydrates, which represent the highest proportion of caloric intake in the average diet, can be subdivided into complex and simple carbohydrates, which differ in terms of how quickly they are digested and absorbed. Simple carbohydrates, composed primarily of monosaccharide and disaccharide sugars, are found in refined grains (white flour and white rice) and table sugar; they have been shown to increase the risk for type 2 diabetes mellitus, dyslipidemia, and hypertension, as well as CVD events and mortality.</p>
+      </div>
+      <h3>Nutrition and cancer.</h3>
+      <div>
+        <p>Scientists have suspected for decades that nutrition has an important influence on the risk of developing cancer. Epidemiological studies as early as the 1960s showed that cancer rates varied widely between populations and that cancer rates in migrants moving from low to high risk countries could rise to equal or sometimes exceed the rates in the host population.12 These observations implied the existence of important environmental causes of cancer, and other studies showed strong correlations between many types of cancer and dietary factors; for example, countries with high intakes of meat had high rates of colorectal cancer.3 Furthermore, experiments in animals showed that cancer rates could be altered by manipulating diet, with compelling evidence that restricting energy intake causes a general reduction in cancer development.
+
+          Cancer is predicted to be the leading cause of death in every country of the world by the end of this century. Although dietary factors are thought to be important in determining the risk of developing cancer, establishing the exact effects of diet on cancer risk has proved challenging. Here we describe the relatively few dietary factors that clearly influence risk of cancers along the digestive tract (from top to bottom) and of other common types of cancer, as well as challenges for future research.</p>
+        <p>Early case-control studies indicated that higher intakes of fruit and vegetables were associated with a lower risk of several types of cancer.11 But subsequent prospective studies, which are not affected by recall or selection bias, produced much weaker findings. In the 2018 World Cancer Research Fund report neither fruits nor vegetables were considered to be convincingly or probably associated with the risk of any cancer.8 There was suggestive evidence for protection of some cancers, and risk might increase at very low intakes. Specific components of certain fruits and vegetables might have a protective action.
+
+          Vegetarians eat no meat or fish and usually eat more fruit and vegetables than comparable non-vegetarians. The risk of all cancer sites combined might be slightly lower in vegetarians and vegans than in non-vegetarians, but findings for individual cancers are inconclusive. </p>
+        <p>By definition, deficiencies of vitamins and essential minerals cause ill health; this might include increased susceptibility to some types of cancer, but establishing the details of any such effects has proved difficult. High dose vitamin or mineral supplements have not reduced cancer risk in well nourished populations and might increase risk; for example, high dose β carotene might increase the risk of lung cancer.13 Vitamin and mineral supplements should not be used for cancer prevention, although they can be important for other aspects of health, such as folic acid supplements for women before conception.</p>
+      </div>
+    </section>
+    <header>
+      <h2 id="Children-section">Children Nutrition Advice</h2>
+    </header>
+    <h3>NUTRITION FOR AUTISM SPECTRUM DISORDER (ASD)</h3>
+    <div>We understand the unique dietary needs of children on the Autism spectrum. Our specialist paediatric dietitian provides an initial consultation followed by 6 follow-up sessions designed to expand your child's dietary variety and ensure they are getting optimal nutrition. We are committed to helping your child thrive and reach their fullest potential.
+
+    </div>
+    <h3>Autism and diets</h3>
+    <div>Given the well-established relationship between diet, health and wellbeing, it’s natural for autistic people and parents of autistic children to seek out food-based solutions that may improve their child’s health or wellbeing.
+      One of the most common beliefs amongst parents of children on the autism spectrum is that removing gluten (the protein in wheat, rye and barley) and casein (the protein in milk) from the diet will improve adaptive behaviours. However, medical practitioners warn that these diets can be low in fibre, B vitamins and calcium, which can affect overall health.
+      There is general agreement, that as many as 50% of children on the autism spectrum have digestive problems , but the reasons for this are not established.
+      Just like the nature of the autism spectrum, there is no one size fits all approach to autism and diet, so if you have any concerns around your child’s nutrition, it’s best to contact a dietitian and seek professional advice.</div>
+    <h3>Food additives</h3>
+    <div>The increasing concern about food additives in our general diet are believed by some to influence behaviours. However, at this stage there is insufficient evidence to support these claims.
+      <p>A dietitian can clarify concerns about food additives such as food dyes and colours, artificial flavourings, preservatives and artificial sweeteners and their role in behavioural symptoms.</p>
+      Dietitians can also help you to develop natural, wholefood diets that are generally better for your health.
+    </div>
+    <h3>Dietitians can:</h3>
+    <ul id="Dietitians can do">
+      <li>assess at whether your child's diet is providing all the nutrients needed</li>
+      <li>give advice on nutritional supplements according to textural/sensory preferences</li>
+      <li>give helpful, practical advice to help reduce mealtime stress or anxiety</li>
+      <li>give advice to help to try new food</li>
+    </ul>
+    <div>Our consultation process begins with a 60-minute session with a paediatric nutrition specialist, followed by a minimum of 6 follow-ups. We focus on a SOS feeding approach, slowly expanding your child's food variety. If indicated - we may also provide a GP letter for prescription supplementation and oral nutrition supplements to fill any nutritional gaps.
+    </div>
+    <h3>Cows milk protein allergy (Dairy allergy) </h3>
+    <div>Our expert paediatric allergy dietitian's will support you every step of the way ensuring your child meets their nutrients requirements as well as give you a clear pathway to overcome your child's Non IgE mediated cows milk protein allergy and provide expert advice for IgE Mediated Cows milk protein allergies.​
+      We have 2 options for children with cows milk protein allergy
+      1-1 online Consultations
+      Fortnightly online Group sessions. f you suspect your child has symptoms of a dairy allergy or have a confirmed diagnosis , we are here to support you.
+    </div>
+    <header>
+      <h2 id="Contact-section">Contact us</h2>
+    </header>
+
+    <h3> Make a booking </h3>
+
+    <p> All our consultations are done via our telehealth online platform and app. Wherever you are, you can speak to our expert dietitians & nutritionists.</p>
+
+    <h3> Our process is simple</h3>
+    <p><br>
+      1. You book an initial consultation
+      <br>
+      2. You activate your practice better account (our online software)
+      <br>
+      3. We send you the pre-assessment forms
+      <br>
+      4. You will receive an email with your zoom link
+      <br>
+      5. You meet your dietitian.
+    </p>
+
+    <div class="container">
+      <form id="form">
+        <h3> APPOINTMENT FOR 1-1 </h3>
+
+        <!-- Name, Email & Phone -->
+        <input type="text" id="name" placeholder="Your Name" required>
+
+        <input type="email" id="email" placeholder="Email Address" required>
+
+        <input type="text" id="phone" placeholder="Phone Number" required>
+
+        <!-- message box -->
+        <textarea id="message" rows="4" placeholder="How can we help you?"></textarea>
+
+        <!-- buttons -->
+        <button type="submit"> Send </button>
+
+      </form>
+
+    </div>
+    <button type="button" id="backToTop"> Back to top</button>
+</section>
+<footer>
+  <p>&copy; 2024 Javascript Project, group "Health 1" </p>
+</footer>
