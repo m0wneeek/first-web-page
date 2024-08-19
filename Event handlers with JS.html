@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<!-- simple form page with event handlers test -->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        body {
+          background-color: darkslategrey;
+          color: white;
+          font-family: sans-serif;
+          text-align: center;
+        }
+
+        button {
+          display: block;
+          margin: 20px auto;
+        }
+
+        input {
+          height: 25px;
+        }
+        </style>
+    </head>
+    <body>
+      <form onsubmit="logEventObject(event)">
+        <p>Email Address</p>
+        <input type="email">
+        <button id="button" type="submit">Submit</button>
+      </form>   
+              
+      <form onsubmit="changeSubmitButton(event)">
+        <p>Full name</p>
+        <input type="text">
+        <button type="submit" id="submitButton">Submit</button>
+      </form
+      
+      <form onsubmit="logUsername(event)">
+        <p>Username</p>
+        <input type="text" name="username">
+        <button type="submit">Submit</button>
+      </form>
+      <script>
+        function logEventObject(event) {
+          event.preventDefault();
+          console.log(event);
+        }
+          
+        function changeSubmitButton(event) {
+            event.preventDefault();
+            let submitButton = document.getElementById("submitButton");
+            submitButton.innerText = "Sent!";
+            submitButton.style = "background-color: green; color: white;";
+        }
+          
+        function logUsername(event) {
+          event.preventDefault();
+					let form = event.target;
+          let usernameValue = form.username.value;
+          console.log(usernameValue);
+        }
+    	</script>
+    </body>
+</html>
